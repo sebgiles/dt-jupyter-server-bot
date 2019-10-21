@@ -1,3 +1,7 @@
 #!/bin/bash
 NAME=${PWD##*/}
-docker run -it --rm -v ~/rosbags:/data duckietown/dt-$NAME:v1-amd64
+#NAME="e22-braitenberg-avoid"
+#docker run -it --rm -v ~/rosbags:/data duckietown/dt-$NAME:v1-amd64
+#-e "VEHICLE_NAME"="theducknight"
+#docker -H theducknight.local run -it  -v /data:/data --rm --net=host duckietown/dt-$NAME:v1-arm32v7 #/bin/sh
+docker run -it --rm --net host -v ~/homework/jupyter-node/notebooks:/notebooks -e VEHICLE_NAME="theducknight" -e ROS_IP="109.202.221.9" -e ROS_MASTER_URI="http://109.202.221.93:11311/" duckietown/dt-$NAME:v1-amd64

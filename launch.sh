@@ -4,4 +4,5 @@ set -e
 
 # YOUR CODE BELOW THIS LINE
 # ----------------------------------------------------------------------------
-echo "This is an empty launch script. Update it to launch your application."
+jupyter notebook --port=8888 --no-browser --ip=0.0.0.0 --allow-root
+#roslaunch braitenberg_node braitenberg_node.launch veh:=$VEHICLE_NAME

@@ -1,9 +1,9 @@
 # parameters
-ARG REPO_NAME="<REPO_NAME_HERE>"
+ARG REPO_NAME="proxy"
 
 # ==================================================>
 # ==> Do not change this code
-ARG ARCH=arm32v7
+ARG ARCH=amd64
 ARG MAJOR=daffy
 ARG BASE_TAG=${MAJOR}-${ARCH}
 ARG BASE_IMAGE=dt-ros-commons
@@ -12,7 +12,7 @@ ARG BASE_IMAGE=dt-ros-commons
 FROM duckietown/${BASE_IMAGE}:${BASE_TAG}
 
 # define repository path
-ARG REPO_NAME
+#ARG REPO_NAME
 ARG REPO_PATH="${CATKIN_WS_DIR}/src/${REPO_NAME}"
 WORKDIR "${REPO_PATH}"
 
@@ -32,6 +32,8 @@ RUN apt-get update \
 # install python dependencies
 RUN pip install -r ${REPO_PATH}/dependencies-py.txt
 
+RUN pip install jupyter
+
 # copy the source code
 COPY . "${REPO_PATH}/"
 
@@ -43,10 +45,13 @@ RUN . /opt/ros/${ROS_DISTRO}/setup.sh && \
 # define launch script
 ENV LAUNCHFILE "${REPO_PATH}/launch.sh"
 
+# Set environmental variable(s)
+ENV ACCEPT_INTEL_PYTHON_EULA=yes
+
 # define command
 CMD ["bash", "-c", "${LAUNCHFILE}"]
 # <== Do not change this code
 # <==================================================
 
 # maintainer
-LABEL maintainer="<YOUR_FULL_NAME> (<YOUR_EMAIL_ADDRESS>)"
+LABEL maintainer="Sebastian Nicolas Giles sgiles@student.ethz.ch"
