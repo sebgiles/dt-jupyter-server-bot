@@ -1,0 +1,3 @@
+#!/bin/bash
+NAME=${PWD##*/}
+docker run -it --rm -v ~/rosbags:/data duckietown/dt-$NAME:v1-amd64
