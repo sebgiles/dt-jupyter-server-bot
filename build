@@ -1,2 +1,4 @@
 #!/bin/bash
-dts devel build -f --arch amd64
+dts devel watchtower stop -H theducknight.local
+dts devel build -f --arch arm32v7 -H theducknight.local
+dts devel watchtower start -H theducknight.local

@@ -3,7 +3,7 @@ ARG REPO_NAME="proxy"
 
 # ==================================================>
 # ==> Do not change this code
-ARG ARCH=amd64
+ARG ARCH=arm32v7
 ARG MAJOR=daffy
 ARG BASE_TAG=${MAJOR}-${ARCH}
 ARG BASE_IMAGE=dt-ros-commons
